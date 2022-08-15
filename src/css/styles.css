@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+.buttons-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+.buttons-wrapper>button{
+    width: 50px;
+}
+.buttons-wrapper>button.up{
+    background-color:lightgreen;
+    border:2px solid lightgreen;
+    border-radius: 4px;
+    
+}
+.buttons-wrapper>button.down{
+    background-color:lightpink;
+    border:2px solid lightpink;
+    border-radius: 4px;
+}
+.floor{
+    border-bottom: 2px solid black;
+    max-height: 150px;
+    height: 150px;;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    margin: 10px;
+    z-index: 1;
+}
+hr{
+    color: black;
+}
+.lift{
+    background-color: white;
+    height: 100px;
+    max-height: 100px;
+    width: 80px;
+    z-index: 2;
+    /* position:; */
+    position: absolute;
+    left:100px;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 0;
+}
+.door{
+    border: 1px solid white;
+    
+    background-color: black;
+    width: 40px;
+}
+.door-left{
+    border-radius:4px 0 0 4px;
+}
+.door-right{
+    border-radius:0 4px 4px 0;
+}
