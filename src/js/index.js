@@ -46,7 +46,6 @@ const findNearestlift = (lifts, destinationFloor) => {
 const moveLift = (from, to, liftId) => {
     const lift = lifts.find(lift => lift.id === liftId);
     const distance = -1 * (to) * 160;
-    console.log(distance, 'distance');
     const time = Math.abs(from - to) * 2;
     const leftDoor = document.querySelector(`#left-door${liftId}`)
     const rightDoor = document.querySelector(`#right-door${liftId}`)
