@@ -1,5 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 *{
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+:root{
+    --green:#14b8a6;
+    --red:#e11d48;
+    --door-color:#604AF4;
+    --dark-bg:#111827;
+    --white:#d1d5db;
+    --form-bg:#1f2937;
+}
+.form{
+    display: flex;
+    background-color: var(--form-bg);
+    flex-direction: column;
+    width: 350px;
+    justify-content: center;
+    margin: 2rem auto;
+    border-radius: 8px;
+    /* align-items: center; */
+}
+.form>button{
+    background-color: var(--door-color);
+    font-size: 1.3rem;
+    width: fit-content;
+    border-radius:4px ;
+    margin: 1rem auto;
+}
+.form>input{
+    background-color: var(--dark-bg);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 80%;
+    margin: 5px auto;
+}
+label{
+    font-weight: bold;
+    margin: 5px 2rem;
+}
+body{
+    background-color: var(--dark-bg);
+    color:var(--white) ;
+}
+button{
+    color: #ffe;
+    cursor: pointer;
 }
 .buttons-wrapper{
     display: flex;
@@ -10,18 +57,18 @@
     width: 50px;
 }
 .buttons-wrapper>button.up{
-    background-color:lightgreen;
-    border:2px solid lightgreen;
+    background-color:var(--green);
+    border:2px solid var(--green);
     border-radius: 4px;
     
 }
 .buttons-wrapper>button.down{
-    background-color:lightpink;
-    border:2px solid lightpink;
+    background-color:var(--red);
+    border:2px solid var(--red);
     border-radius: 4px;
 }
 .floor{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--white);
     max-height: 150px;
     height: 150px;;
     overflow-y: auto;
@@ -30,10 +77,9 @@
     gap:1rem;
     margin: 10px;
     z-index: 1;
+    overflow-x: auto;
 }
-hr{
-    color: black;
-}
+
 .lift{
     background-color: white;
     height: 100px;
@@ -44,7 +90,7 @@ hr{
     position: absolute;
     left:100px;
     display: flex;
-    border: 1px solid black;
+    border: 1px solid var(--white);
     border-radius: 4px;
     overflow: hidden;
     padding: 0;
@@ -52,7 +98,7 @@ hr{
 .door{
     border: 1px solid white;
     
-    background-color: black;
+    background-color: var(--door-color);
     width: 40px;
 }
 .door-left{

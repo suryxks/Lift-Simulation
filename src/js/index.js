@@ -14,6 +14,11 @@ formSubmitButton.addEventListener('click', (e) => {
     lifts = [];
     floors = [];
     const numberOfLifts = Number(liftInput.value);
+    window.scrollTo({
+        botton: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     if (!numberOfFloors || !numberOfLifts) {
         alert('please enter number of lifts and floors')
     }
