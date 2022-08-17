@@ -11,6 +11,17 @@
     --white:#d1d5db;
     --form-bg:#1f2937;
 }
+.heading{
+    text-align: center;
+}
+.repo-link{
+    text-align: center;
+    color: var(--white);
+    
+}
+.repo-link>a:visited{
+    color: var(--white);
+}
 .form{
     display: flex;
     background-color: var(--form-bg);
@@ -23,10 +34,7 @@
 }
 .form>button{
     background-color: var(--door-color);
-    font-size: 1.3rem;
-    width: fit-content;
-    border-radius:4px ;
-    margin: 1rem auto;
+    font-size: 1.2rem;
 }
 .form>input{
     background-color: var(--dark-bg);
@@ -47,6 +55,11 @@ body{
 button{
     color: #ffe;
     cursor: pointer;
+    padding: 4px 6px;
+    width: fit-content;
+    
+    border-radius:4px ;
+    margin: 1rem auto;
 }
 .buttons-wrapper{
     display: flex;
@@ -55,6 +68,7 @@ button{
 }
 .buttons-wrapper>button{
     width: 50px;
+    
 }
 .buttons-wrapper>button.up{
     background-color:var(--green);
@@ -70,14 +84,12 @@ button{
 .floor{
     border-bottom: 2px solid var(--white);
     max-height: 150px;
-    height: 150px;;
-    overflow-y: auto;
+    height: 150px;
     display: flex;
     align-items: center;
     gap:1rem;
     margin: 10px;
     z-index: 1;
-    overflow-x: auto;
 }
 
 .lift{
