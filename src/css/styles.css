@@ -39,10 +39,10 @@
 .form>input{
     background-color: var(--dark-bg);
     color: white;
-    border: none;
     padding: 10px;
     width: 80%;
     margin: 5px auto;
+    border-radius: 4px;
 }
 label{
     font-weight: bold;
