@@ -50,21 +50,24 @@ const findNearestlift = (lifts, destinationFloor) => {
 
 const moveLift = (from, to, liftId) => {
     const lift = lifts.find(lift => lift.id === liftId);
+
     const distance = -1 * (to) * 160;
     const time = Math.abs(from - to) * 2;
     const leftDoor = document.querySelector(`#left-door${liftId}`)
     const rightDoor = document.querySelector(`#right-door${liftId}`)
     setTimeout(() => {
-        lift.currentFloor = to;
+        
         leftDoor.style.transform = `translateX(-100%)`;
         leftDoor.style.transition = `transform 2.5s`;
         rightDoor.style.transform = `translateX(100%)`
         rightDoor.style.transition = `transform 2.5s`
-
+        lift.currentFloor = to;
+        lift.isMoving = false;
+        lift.movingTo =null;
     }, time * 1000)
 
     lift.isActicve = true;
-
+    
     setTimeout(() => {
         leftDoor.style.transform = `translateX(0)`;
         leftDoor.style.transition = `transform 2.5s`;
@@ -73,8 +76,10 @@ const moveLift = (from, to, liftId) => {
 
     }, time * 1000 + 2500)
     setTimeout(() => {
-        lift.isActicve = false;;
+        lift.isActicve = false;
     }, time * 1000 + 5000)
+    lift.isMoving = true;
+    lift.movingTo = to;
     lift.domElement.style.transform = `translateY(${distance}px)`;
     lift.domElement.style.transition = `transform ${time}s`
 }
@@ -106,6 +111,8 @@ const generateFloors = (floorCount) => {
     }
 }
 const generateLifts = (liftCount) => {
+    let intervalId;
+    clearInterval(intervalId)
     for (let index = 0; index < liftCount; index++) {
         //generate lifts
         const floor0 = document.querySelector("#floor0");
@@ -129,13 +136,25 @@ const generateLifts = (liftCount) => {
             currentFloor: 0,
             domElement: lift,
             innerHtML: ``,
+            isMoving: false,
+            movingTo:null,
         }
         floor0.appendChild(lift);
         lifts.push(liftState)
     }
 
+    
     setInterval(() => {
-        scheduleLift()
+        // const floor = pending.shift();
+        // const isLiftGoingToFloor = lifts.find(lift => lift.currentFloor === floor && lift.isActicve === true)
+        // console.log(isLiftGoingToFloor)
+        // if (isLiftGoingToFloor) {
+        //     // pending.unshift(floor);
+        //     return;
+        // } else {
+        //    scheduleLift()
+        // }
+        scheduleLift();
     }, 100)
 }
 const scheduleLift = () => {
@@ -143,6 +162,10 @@ const scheduleLift = () => {
     const floor = pending.shift();
     const nearestliftId = findNearestlift(lifts, floor);
     const nearestLift = lifts.find(lift => lift.id === nearestliftId);
+    const isLiftGoingToFloor = lifts.find(lift => lift.movingTo === floor && lift.isMoving === true)
+    if (isLiftGoingToFloor) {
+        return;
+    }
     if (!nearestLift) {
         pending.unshift(floor);
         return;
