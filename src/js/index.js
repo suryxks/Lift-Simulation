@@ -145,15 +145,6 @@ const generateLifts = (liftCount) => {
 
     
     setInterval(() => {
-        // const floor = pending.shift();
-        // const isLiftGoingToFloor = lifts.find(lift => lift.currentFloor === floor && lift.isActicve === true)
-        // console.log(isLiftGoingToFloor)
-        // if (isLiftGoingToFloor) {
-        //     // pending.unshift(floor);
-        //     return;
-        // } else {
-        //    scheduleLift()
-        // }
         scheduleLift();
     }, 100)
 }
