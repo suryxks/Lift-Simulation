@@ -27,7 +27,7 @@ formSubmitButton.addEventListener('click', (e) => {
 
 
 const generateFloorsAndlift = (liftCount, floorCount) => {
-    generateFloors(floorCount);
+    generateFloors(floorCount,liftCount);
     generateLifts(liftCount)
 }
 const clickHandler = (event) => {
@@ -87,12 +87,14 @@ const moveLift = (from, to, liftId) => {
     lift.domElement.style.transform = `translateY(${distance}px)`;
     lift.domElement.style.transition = `transform ${time}s`
 }
-const generateFloors = (floorCount) => {
-
+const generateFloors = (floorCount,liftCount) => {
+    const viewportWidth = window.innerWidth;
+    const calculatedWidth = 100 * liftCount + 80;
     for (let index = 0; index < floorCount; index++) {
         const floor = document.createElement("div");
         floor.classList.add('floor')
-        floor.id = `floor${floorCount - index - 1}`
+        floor.id = `floor${floorCount - index - 1}`;
+        floor.style.width=viewportWidth>calculatedWidth?`${viewportWidth-100}px`:`${calculatedWidth}px`
         const buttonsContainer = document.createElement("div");
         const UpButton = document.createElement("button");
         UpButton.innerText = 'Up'
